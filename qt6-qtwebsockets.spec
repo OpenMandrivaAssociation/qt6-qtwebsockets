@@ -5,7 +5,7 @@
 %define _qtdir %{_libdir}/qt%{major}
 
 Name:		qt6-qtwebsockets
-Version:	6.2.1
+Version:	6.2.2
 Release:	%{?beta:0.%{beta}.}%{?snapshot:0.%{snapshot}.}1
 %if 0%{?snapshot:1}
 # "git archive"-d from "dev" branch of git://code.qt.io/qt/qtbase.git
@@ -77,13 +77,12 @@ Development files for the Qt %{major} ${lib} library
 %optional %{_qtdir}/modules/${lib}Private.json
 %optional %{_libdir}/cmake/Qt%{major}${lib}
 %optional %{_libdir}/cmake/Qt%{major}${lib}Private
-%optional %{_qtdir}/lib/cmake/Qt%{major}${lib}
 %optional %{_qtdir}/lib/metatypes/qt%{major}$(echo ${lib}|tr A-Z a-z)_relwithdebinfo_metatypes.json
 %optional %{_qtdir}/lib/metatypes/qt%{major}$(echo ${lib}|tr A-Z a-z)private_relwithdebinfo_metatypes.json
 %optional %{_qtdir}/mkspecs/modules/qt_lib_$(echo ${lib}|tr A-Z a-z).pri
 %optional %{_qtdir}/mkspecs/modules/qt_lib_$(echo ${lib}|tr A-Z a-z)_private.pri
-%optional %{_qtdir}/lib/cmake/Qt6BuildInternals/StandaloneTests/Qt${lib}TestsConfig.cmake
-%optional %{_qtdir}/lib/cmake/Qt6Qml/QmlPlugins/Qt%{major}$(echo ${lib}|tr A-Z a-z){AdditionalTargetInfo,Config,ConfigVersion,Targets,Targets-relwithdebinfo}*.cmake
+%optional %{_libdir}/cmake/Qt6BuildInternals/StandaloneTests/Qt${lib}TestsConfig.cmake
+%optional %{_libdir}/cmake/Qt6Qml/QmlPlugins/Qt%{major}$(echo ${lib}|tr A-Z a-z){AdditionalTargetInfo,Config,ConfigVersion,Targets,Targets-relwithdebinfo}*.cmake
 EOF
 done)}
 
@@ -119,10 +118,7 @@ mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_libdir}/cmake
 for i in %{buildroot}%{_qtdir}/lib/*.so*; do
         ln -s qt%{major}/lib/$(basename ${i}) %{buildroot}%{_libdir}/
 done
-for i in %{buildroot}%{_qtdir}/lib/cmake/*; do
-        [ "$(basename ${i})" = "Qt6BuildInternals" -o "$(basename ${i})" = "Qt6Qml" ] && continue
-        ln -s ../qt%{major}/lib/cmake/$(basename ${i}) %{buildroot}%{_libdir}/cmake/
-done
+mv %{buildroot}%{_qtdir}/lib/cmake %{buildroot}%{_libdir}
 
 %files
-%{_qtdir}/lib/cmake/Qt6Qml/QmlPlugins/*.cmake
+%{_libdir}/cmake/Qt6Qml/QmlPlugins/*.cmake
