@@ -1,5 +1,7 @@
+%define beta beta2
+
 Name:		qt6-qtwebsockets
-Version:	6.3.1
+Version:	6.4.0
 Release:	%{?beta:0.%{beta}.}%{?snapshot:0.%{snapshot}.}1
 %if 0%{?snapshot:1}
 # "git archive"-d from "dev" branch of git://code.qt.io/qt/qtbase.git
@@ -35,6 +37,10 @@ License:	LGPLv3/GPLv3/GPLv2
 
 %description
 Qt %{qtmajor} Web Sockets module
+
+%global extra_files_WebSockets \
+%{_qtdir}/lib/cmake/Qt6Qml/QmlPlugins/*websockets* \
+%{_qtdir}/qml/QtWebSockets
 
 %qt6libs WebSockets
 
