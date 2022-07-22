@@ -25,6 +25,7 @@ BuildRequires:	cmake(Qt6OpenGLWidgets)
 BuildRequires:	cmake(Qt6DBus)
 BuildRequires:	qt6-cmake
 BuildRequires:	cmake(Qt6Qml)
+BuildRequires:	cmake(Qt6QmlTools)
 BuildRequires:	cmake(Qt6Quick)
 BuildRequires:	cmake(Qt6QuickTest)
 BuildRequires:	pkgconfig(gl)
@@ -32,6 +33,7 @@ BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(vulkan)
 BuildRequires:	cmake(LLVM)
 BuildRequires:	cmake(Clang)
+BuildRequires:	qt6-qtdeclarative
 # Not really required, but referenced by LLVMExports.cmake
 # (and then required because of the integrity check)
 BuildRequires:	%{_lib}gpuruntime
