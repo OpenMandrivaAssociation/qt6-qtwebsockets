@@ -1,7 +1,7 @@
 #define beta rc
 
 Name:		qt6-qtwebsockets
-Version:	6.4.1
+Version:	6.4.2
 Release:	%{?beta:0.%{beta}.1}%{?snapshot:1.%{snapshot}.}1
 %if 0%{?snapshot:1}
 # "git archive"-d from "dev" branch of git://code.qt.io/qt/qtbase.git
