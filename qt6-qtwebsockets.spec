@@ -2,7 +2,7 @@
 
 Name:		qt6-qtwebsockets
 Version:	6.6.0
-Release:	%{?beta:0.%{beta}.1}%{?snapshot:0.%{snapshot}.}1
+Release:	%{?beta:0.%{beta}.}%{?snapshot:0.%{snapshot}.}1
 %if 0%{?snapshot:1}
 # "git archive"-d from "dev" branch of git://code.qt.io/qt/qtbase.git
 Source:		qtwebsockets-%{?snapshot:%{snapshot}}%{!?snapshot:%{version}}.tar.zst
