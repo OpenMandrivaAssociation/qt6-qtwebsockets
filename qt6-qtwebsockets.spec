@@ -1,4 +1,4 @@
-%define beta beta3
+%define beta beta4
 
 Name:		qt6-qtwebsockets
 Version:	6.6.0
