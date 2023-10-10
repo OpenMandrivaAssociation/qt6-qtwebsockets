@@ -1,4 +1,4 @@
-%define beta rc
+#define beta rc
 
 Name:		qt6-qtwebsockets
 Version:	6.6.0
